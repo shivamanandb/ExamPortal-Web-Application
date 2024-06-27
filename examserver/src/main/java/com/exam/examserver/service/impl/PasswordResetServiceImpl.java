@@ -42,7 +42,7 @@ public class PasswordResetServiceImpl implements PasswordResetService {
     public void sendPasswordResetEmail(User user, String token) {
         String recipientAddress = user.getEmail();
         String subject = "Password Reset Request";
-        String confirmationUrl = "http://localhost:3000/reset-password?token=" + token;
+        String confirmationUrl = "https://examportal-web-application-front-end.vercel.app/reset-password?token=" + token;
         String message = "To reset your password, please click the link below:\n" + confirmationUrl;
 
         SimpleMailMessage email = new SimpleMailMessage();
