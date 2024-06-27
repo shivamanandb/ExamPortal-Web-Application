@@ -7,9 +7,10 @@ import { useSelector } from 'react-redux';
 export const AddCategory = () => {
     const { register, handleSubmit, reset, formState: { errors, isSubmitSuccessful } } = useForm();
     const { token } = useSelector((state) => state.auth);
+    const { user } = useSelector((state) => state.profile)
 
     const formSubmit = (data) => {
-        addCategory(data, token);
+        addCategory(data, user.institute.id, token);
     };
 
     useEffect(() => {
