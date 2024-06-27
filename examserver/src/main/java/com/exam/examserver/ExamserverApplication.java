@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.exam.examserver.models.Role;
@@ -19,8 +20,11 @@ import com.exam.examserver.service.UserService;
 @EnableScheduling
 public class ExamserverApplication implements CommandLineRunner {
 
-	// @Autowired
-	// private UserService userService;
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ExamserverApplication.class, args);
@@ -35,13 +39,13 @@ public class ExamserverApplication implements CommandLineRunner {
 		// user.setFirstName("Shivam");
 		// user.setLastName("Anand");
 		// user.setUsername("shivamanandb");
-		// user.setPassword("shivamanandb");
+		// user.setPassword(bCryptPasswordEncoder.encode("shivamanandb"));
 		// user.setEmail("shivamanandb@gmail.com");
-		// user.setProfile("default.png");
+		// user.setProfile(null);
 		
 		// Role role = new Role();
-		// role.setRoleId(44L);
-		// role.setRoleName("ADMIN");
+		// role.setRoleId(46L);
+		// role.setRoleName("SUPER_USER");
 
 		// Set<UserRole> userRoleSet = new HashSet<>();
 		// UserRole userRole = new UserRole();
