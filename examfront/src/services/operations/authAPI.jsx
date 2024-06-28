@@ -65,7 +65,7 @@ export function login(username, password, navigate) {
       //   : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
       // dispatch(setUser({ ...response.data.user, image: userImage }))
       
-      localStorage.setItem("token", JSON.stringify(response.data.token))
+      // localStorage.setItem("token", JSON.stringify(response.data.token))
       // //console.log("User: ", user)
     } catch (error) {
       //console.log("LOGIN API ERROR............", error)

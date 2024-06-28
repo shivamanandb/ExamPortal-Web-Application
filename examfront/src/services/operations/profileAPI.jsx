@@ -18,7 +18,7 @@ export function getUserDetails(token, navigate) {
             });
 
             //console.log("GET USER DETAILS API RESPONSE..........", response);
-            localStorage.setItem("user", JSON.stringify(response.data));
+            // localStorage.setItem("user", JSON.stringify(response.data));
             dispatch(setUser(response.data));
 
             if (!response.data) {
