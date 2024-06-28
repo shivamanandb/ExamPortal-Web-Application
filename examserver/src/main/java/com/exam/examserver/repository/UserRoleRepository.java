@@ -6,4 +6,5 @@ import com.exam.examserver.models.UserRole;
 
 public interface UserRoleRepository extends JpaRepository<UserRole,Long> {
     
+    public void deleteByUserRoleId(Long id);
 }

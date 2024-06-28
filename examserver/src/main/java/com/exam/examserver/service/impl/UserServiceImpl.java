@@ -15,6 +15,8 @@ import com.exam.examserver.repository.UserRepository;
 import com.exam.examserver.repository.UserRoleRepository;
 import com.exam.examserver.service.UserService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -57,19 +59,29 @@ public class UserServiceImpl implements UserService {
 
     // deleting user by userId
     @Override
-    public void deleteUser(Long userId) {
+@Transactional
+public void deleteUser(Long userId) {
+    Optional<User> userOptional = userRepository.findById(userId);
+    if (userOptional.isPresent()) {
+        User user = userOptional.get();
         
-        Optional<User> user = userRepository.findById(userId);
-
-        if(user.isEmpty())
-            return;
+        // Remove the user from the institute
+        if (user.getInstitute() != null) {
+            user.getInstitute().getUsers().remove(user);
+            user.setInstitute(null);
+        }
         
-        User user2 = user.get();
-        user2.setInstitute(null);
+        // Remove UserRole entries
+        Set<UserRole> userRoles = user.getUserRoles();
+        userRoleRepository.deleteAll(userRoles);
         
-        this.userRoleRepository.deleteById(userId);
-        this.userRepository.deleteById(userId);
+        // Clear the user's roles
+        user.getUserRoles().clear();
+        
+        // Delete the user
+        userRepository.delete(user);
     }
+}
 
     @Override
     public Optional<User> findByEmail(String email) {

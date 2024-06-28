@@ -39,7 +39,7 @@ public class User implements UserDetails {
     private boolean enabled = true;
 
     // user many roles
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user", orphanRemoval = true)
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
 
