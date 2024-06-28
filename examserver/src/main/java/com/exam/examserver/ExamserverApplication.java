@@ -34,7 +34,7 @@ public class ExamserverApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Starting code");
+		// System.out.println("Starting code");
 
 		// User user= new User();
 
@@ -56,6 +56,6 @@ public class ExamserverApplication implements CommandLineRunner {
 		// userRoleSet.add(userRole);
 
 		// User user1 = this.userService.createUser(user, userRoleSet);
-		// System.out.println(user1.getUsername());
+		// // System.out.println(user1.getUsername());
 	}
 }

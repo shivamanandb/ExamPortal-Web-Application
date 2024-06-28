@@ -38,7 +38,7 @@ public class AuthenticateController {
     // generate token
     @PostMapping("/generate-token")
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
-        System.out.println("jwtRequest: " + jwtRequest);
+        // System.out.println("jwtRequest: " + jwtRequest);
         try {
 
             authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
@@ -52,7 +52,7 @@ public class AuthenticateController {
         /////// authenticate
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(jwtRequest.getUsername());
         String token = this.jwtUtils.generateToken(userDetails);
-        System.out.println("Token: " + token);
+        // System.out.println("Token: " + token);
         return ResponseEntity.ok(new JwtResponse(token));
     }
 

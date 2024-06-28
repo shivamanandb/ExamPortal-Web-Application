@@ -104,7 +104,7 @@ public class QuestionController {
         int correctAnswers = 0;
         int attempted = 0;
 
-        System.out.println(questions);
+        // System.out.println(questions);
         for(Question q : questions) {
             // single quesiton
             question = this.questionService.get(q.getQuesId());

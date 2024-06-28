@@ -34,7 +34,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         
         final String requestTokenHeader = request.getHeader("Authorization");
-        System.out.println(requestTokenHeader);
+        // System.out.println(requestTokenHeader);
         String username = null;
         String jwtToken = null;
 
@@ -47,15 +47,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 try {
                     username = this.jwtUtil.extractUsername(jwtToken);
-                    System.out.println("useraname:"+ username);
+                    // System.out.println("useraname:"+ username);
                     
                 } catch (ExpiredJwtException e) {
                     e.printStackTrace();
-                    System.out.println("JWT token has expired");
+                    // System.out.println("JWT token has expired");
                 
                 } catch(Exception e) {
                     e.printStackTrace();
-                    System.out.println("error");
+                    // System.out.println("error");
                 }
 
             } catch(Exception e) {
@@ -63,7 +63,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         } else {
 
-            System.out.println("Invalid token, not start with bearer string");
+            // System.out.println("Invalid token, not start with bearer string");
         }
 
         // validated
@@ -82,7 +82,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
         else {
-            System.out.println("token is not valid");
+            // System.out.println("token is not valid");
         }
 
         filterChain.doFilter(request, response);
