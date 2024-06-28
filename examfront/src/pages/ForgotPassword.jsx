@@ -19,7 +19,7 @@ export const ForgotPassword = () => {
             setMessage(response.data);
             setOpen(true);
         } catch (error) {
-            setMessage(error.response?.data || 'An error occurred');
+            setMessage(error.response?.data || 'An error occurred. If you changed your password recently then please try again after 1 hour');
             setOpen(true);
         }
     };
