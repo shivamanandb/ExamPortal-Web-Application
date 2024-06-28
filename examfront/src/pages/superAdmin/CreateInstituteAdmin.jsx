@@ -41,13 +41,13 @@ const CreateInstituteAdmin = () => {
     setLoading(true);
     try {
       const createdInstitute = await createInstitute({ name: formData.name }, token);
-      console.log('Created Institute:', createdInstitute);
+      //console.log('Created Institute:', createdInstitute);
 
       const createdAdmin = await createAdmin({
         ...formData,
         institute: createdInstitute
       }, token);
-      console.log('Created Admin:', createdAdmin);
+      //console.log('Created Admin:', createdAdmin);
 
       setSnackbar({
         open: true,

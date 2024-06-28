@@ -20,7 +20,7 @@ export const ViewCategories = () => {
             setCategories(res);
             toast.success("All Categories Fetched");
         } catch (error) {
-            console.log("fetching Categories error");
+            //console.log("fetching Categories error");
             toast.error("Something went wrong");
         }
         toast.dismiss(toastId);
@@ -37,7 +37,7 @@ export const ViewCategories = () => {
             setCategories(categories.filter(c => c.cid !== categoryId));
             toast.success("Category deleted successfully");
         } catch (error) {
-            console.log("Delete category error", error);
+            //console.log("Delete category error", error);
             toast.error("Failed to delete category");
         }
         toast.dismiss(toastId);

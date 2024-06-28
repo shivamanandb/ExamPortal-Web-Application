@@ -35,7 +35,7 @@ export const LoadQuiz = () => {
                 } catch (error) {
                     console.error('Error fetching quiz:', error.message)
                 }
-                console.log("Category Data: ", quizzes)
+                //console.log("Category Data: ", quizzes)
             }
         };
 

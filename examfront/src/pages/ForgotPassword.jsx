@@ -15,11 +15,11 @@ export const ForgotPassword = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axios.post(BASE_URL + '/api/password/reset-request', null, { params: { email: data.email } });
-            console.log("Helllo", response)
+            //console.log("Helllo", response)
             setMessage(response.data);
             setOpen(true);
         } catch (error) {
-            setMessage(error.response?.data || 'An error occurred. If you changed your password recently then please try again after 1 hour');
+            setMessage('An error occurred. If you changed your password recently then please try again after 1 hour');
             setOpen(true);
         }
     };

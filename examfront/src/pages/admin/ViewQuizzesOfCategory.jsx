@@ -19,7 +19,7 @@ const ViewQuizzesOfCategory = () => {
             setQuizzes(res);
             toast.success("Category Quizzes Fetched");
         } catch (error) {
-            console.log("Error:", error);
+            //console.log("Error:", error);
             toast.error("Something went wrong");
         }
         toast.dismiss(toastId);
@@ -32,7 +32,7 @@ const ViewQuizzesOfCategory = () => {
             setQuizzes(quizzes.filter(quiz => quiz.qId !== quizId));
             toast.success("Quiz Deleted Successfully");
         } catch (error) {
-            console.log("Error:", error);
+            //console.log("Error:", error);
             toast.error("Something went wrong");
         }
         toast.dismiss(toastId);

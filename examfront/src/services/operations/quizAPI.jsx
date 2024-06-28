@@ -18,11 +18,11 @@ export async function getAllQuizzes(instituteId, token) {
     try {
 
         const response = await apiConnector("GET", GET_QUIZZES_API + instituteId, null, {Authorization: `Bearer ${token}`})
-        console.log("FETCH ALL QUIZZES API RESPONSE..........", response)
+        //console.log("FETCH ALL QUIZZES API RESPONSE..........", response)
         result = response?.data
 
     } catch(error) {
-        console.log("FETCH ALL QUIZZES API ERROR............", error)
+        //console.log("FETCH ALL QUIZZES API ERROR............", error)
     }
     return result
 }
@@ -37,13 +37,13 @@ export async function addQuiz(data, token) {
             Authorization: `Bearer ${token}`
         })
 
-        console.log("ADD QUIZ API RESPONSE..........", response)
+        //console.log("ADD QUIZ API RESPONSE..........", response)
 
         toast.success("Quiz Added Successfully")
 
     } catch(error) {
 
-        console.log("ADD QUIZ API ERROR............", error)
+        //console.log("ADD QUIZ API ERROR............", error)
         toast.error("Something went wrong")
     }
     toast.dismiss(toastId)
@@ -60,12 +60,12 @@ export async function deleteQuiz(quizId, token) {
         {
             Authorization: `Bearer ${token}`
         })
-        console.log("DELETE QUIZ API RESPONSE..........", response)
+        //console.log("DELETE QUIZ API RESPONSE..........", response)
         toast.success("Quiz Deleted Successfully")
 
     } catch(error) {
 
-        console.log("DELETE QUIZ API ERROR............", error)
+        //console.log("DELETE QUIZ API ERROR............", error)
         toast.error("Something went wrong")
     }
     toast.dismiss(toastId)
@@ -80,12 +80,12 @@ export async function getQuiz(quizId, token) {
         {
             Authorization: `Bearer ${token}`
         })
-        console.log("GET QUIZ API RESPONSE..........", response)
+        //console.log("GET QUIZ API RESPONSE..........", response)
         res = response?.data
 
     } catch(error) {
 
-        console.log("GET QUIZ API ERROR............", error)
+        //console.log("GET QUIZ API ERROR............", error)
         alert("Something went wrong")
     }
     return res
@@ -102,13 +102,13 @@ export async function updateQuiz(quizId, data, token, navigate) {
         {
             Authorization: `Bearer ${token}`
         })
-        console.log("UPDATE QUIZ API RESPONSE..........", response)
+        //console.log("UPDATE QUIZ API RESPONSE..........", response)
         toast.success("Quiz Updated Successfully")
         navigate("/admin/quizzes")
 
     } catch(error) {
 
-        console.log("UPDATE QUIZ API ERROR............", error)
+        //console.log("UPDATE QUIZ API ERROR............", error)
         toast.error("Something went wrong")
     }
     toast.dismiss(toastId)
@@ -122,12 +122,12 @@ export async function getQuizzesOfCategory(cid, token) {
         {
             Authorization: `Bearer ${token}`
         })
-        console.log("GET QUIZZES API RESPONSE..........", response)
+        //console.log("GET QUIZZES API RESPONSE..........", response)
         res = response?.data
 
     } catch(error) {
 
-        console.log("GET QUIZZES API ERROR............", error)
+        //console.log("GET QUIZZES API ERROR............", error)
         alert("Something went wrong")
     }
     return res
@@ -141,12 +141,12 @@ export async function getActiveQuizzes(instituteId, token) {
         {
             Authorization: `Bearer ${token}`
         })
-        console.log("GET ACTIVE QUIZZES API RESPONSE..........", response)
+        //console.log("GET ACTIVE QUIZZES API RESPONSE..........", response)
         res = response?.data
 
     } catch(error) {
 
-        console.log("GET ACTIVE QUIZZES API ERROR............", error)
+        //console.log("GET ACTIVE QUIZZES API ERROR............", error)
         alert("Something went wrong")
     }
     return res
@@ -160,13 +160,13 @@ export async function getActiveQuizzesByCategory(cid, token) {
         {
             Authorization: `Bearer ${token}`
         })
-        console.log("GET ACTIVE QUIZZES BY CATEGORY API RESPONSE..........", response)
+        //console.log("GET ACTIVE QUIZZES BY CATEGORY API RESPONSE..........", response)
         res = response?.data
-        console.log("Response here:", res)
+        //console.log("Response here:", res)
 
     } catch(error) {
 
-        console.log("GET ACTIVE QUIZZES BY CATEGORY API ERROR............", error)
+        //console.log("GET ACTIVE QUIZZES BY CATEGORY API ERROR............", error)
         alert("Something went wrong")
     }
     return res
@@ -181,12 +181,12 @@ export async function categoryQuizzes(categoryId, token) {
         {
             Authorization: `Bearer ${token}`
         })
-        console.log("GET QUIZZES API RESPONSE..........", response)
+        //console.log("GET QUIZZES API RESPONSE..........", response)
         res = response?.data
 
     } catch(error) {
 
-        console.log("GET QUIZZES API ERROR............", error)
+        //console.log("GET QUIZZES API ERROR............", error)
         alert("Something went wrong")
     }
     return res

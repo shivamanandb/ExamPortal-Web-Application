@@ -39,10 +39,10 @@ function App() {
   const { token } = useSelector((state) => state.auth)
 
   // const user1 = jwtDecode(token);
-  // console.log("USER: ", user1)
+  // //console.log("USER: ", user1)
   const user1 = token ? jwtDecode(token) : null;
-  console.log("USER: ", user1);
-  console.log("Token: ", token)
+  //console.log("USER: ", user1);
+  //console.log("Token: ", token)
 
 
   return (
