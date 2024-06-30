@@ -2,11 +2,13 @@ package com.exam.examserver.models;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.exam.examserver.models.exam.QuizResult;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -24,7 +26,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "userId")
@@ -47,6 +49,18 @@ public class User implements UserDetails {
     @JoinColumn(name = "institute_id")
     private Institute institute;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "student", orphanRemoval = true)
+    private List<QuizResult> quizResults;
+
+    public List<QuizResult> getQuizResults() {
+        return quizResults;
+    }
+
+    public void setQuizResults(List<QuizResult> quizResults) {
+        this.quizResults = quizResults;
+    }
+
     public Institute getInstitute() {
         return institute;
     }
@@ -63,9 +77,8 @@ public class User implements UserDetails {
         this.profile = profile;
     }
 
-
     public User() {
-       
+
     }
 
     public Long getId() {
@@ -167,7 +180,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;    
+        return true;
     }
 
     @Override
@@ -179,5 +192,5 @@ public class User implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
-    
+
 }

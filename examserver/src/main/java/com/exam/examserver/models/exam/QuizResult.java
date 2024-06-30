@@ -2,6 +2,7 @@ package com.exam.examserver.models.exam;
 
 import com.exam.examserver.models.User;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +18,7 @@ public class QuizResult {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = true)
     private User student;
 
     @ManyToOne
@@ -92,6 +93,5 @@ public class QuizResult {
         this.rank = rank;
     }
 
-    // Getters and setters...
 }
 
