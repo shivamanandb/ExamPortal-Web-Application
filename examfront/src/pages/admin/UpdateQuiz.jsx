@@ -23,7 +23,7 @@ export const UpdateQuiz = () => {
                 const q = await getQuiz(quizId, token)
                 setQuiz(q)
             } catch(error) {
-                //console.log("error in fetching particular quiz: ", error)
+                ////console.log("error in fetching particular quiz: ", error)
             }
         }
         getParticularQuiz(quizId, token)
@@ -34,7 +34,7 @@ export const UpdateQuiz = () => {
                 const res = await getAllCategories(user.institute.id, token);
                 setCategories(res)
             } catch (error) {
-                //console.log("fetching Categories error")
+                ////console.log("fetching Categories error")
             }
         };
         getCategories();

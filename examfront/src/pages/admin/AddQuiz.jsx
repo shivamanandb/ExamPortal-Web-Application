@@ -19,7 +19,7 @@ export const AddQuiz = () => {
                 const res = await getAllCategories(user.institute.id, token);
                 setCategories(res);
             } catch (error) {
-                //console.log("Fetching Categories error:", error);
+                ////console.log("Fetching Categories error:", error);
             }
         };
         getCategories();

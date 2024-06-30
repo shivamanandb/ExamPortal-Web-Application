@@ -14,13 +14,13 @@ export async function getQuestionsOfQuiz(quizId, token) {
         {
             Authorization : `Bearer ${token}`
         })
-        //console.log("GET ALL QUESTIONS API RESPONSE..........", response)
+        ////console.log("GET ALL QUESTIONS API RESPONSE..........", response)
         res = response?.data
         toast.success("Questions Fetched Successfully")
 
     } catch(error) {
         
-        //console.log("GET ALL QUESTIONS API ERROR..........", error)
+        ////console.log("GET ALL QUESTIONS API ERROR..........", error)
         toast.error("Something went wrong")
     }
     toast.dismiss(toastId)
@@ -36,12 +36,12 @@ export async function getQuestionsOfQuizForTest(quizId, token) {
         {
             Authorization : `Bearer ${token}`
         })
-        //console.log("GET QUESTIONS API RESPONSE..........", response)
+        ////console.log("GET QUESTIONS API RESPONSE..........", response)
         res = response?.data
 
     } catch(error) {
         
-        //console.log("GET ALL QUESTIONS API ERROR..........", error)
+        ////console.log("GET ALL QUESTIONS API ERROR..........", error)
     }
     return res
 }
@@ -56,13 +56,13 @@ export async function addQuestion(data, token) {
             Authorization: `Bearer ${token}`
         })
 
-        //console.log("ADD QUESTION API RESPONSE..........", response)
+        ////console.log("ADD QUESTION API RESPONSE..........", response)
 
         toast.success("Question Added Successfully")
 
     } catch(error) {
 
-        //console.log("ADD QUESTION API ERROR............", error)
+        ////console.log("ADD QUESTION API ERROR............", error)
         toast.error("Something went wrong")
     }
     toast.dismiss(toastId)
@@ -76,11 +76,11 @@ export async function deleteQuestion(quesId, token) {
         {
             Authorization: `Bearer ${token}`
         })
-        //console.log("DELETE QUESTION API RESPONSE..........", response)
+        ////console.log("DELETE QUESTION API RESPONSE..........", response)
 
     } catch(error) {
 
-        //console.log("DELETE QUESTION API ERROR............", error)
+        ////console.log("DELETE QUESTION API ERROR............", error)
     }
 }
 
@@ -93,12 +93,12 @@ export async function getQuestion(quesId, token) {
         {
             Authorization: `Bearer ${token}`
         })
-        //console.log("GET QUIZ API RESPONSE..........", response)
+        ////console.log("GET QUIZ API RESPONSE..........", response)
         res = response?.data
 
     } catch(error) {
 
-        //console.log("GET QUIZ API ERROR............", error)
+        ////console.log("GET QUIZ API ERROR............", error)
         alert("Something went wrong")
     }
     return res
@@ -115,27 +115,27 @@ export async function updateQuestion(quesId, data, token) {
         {
             Authorization: `Bearer ${token}`
         })
-        //console.log("UPDATE QUESTION API RESPONSE..........", response)
+        ////console.log("UPDATE QUESTION API RESPONSE..........", response)
         toast.success("Question Updated Successfully")
 
     } catch(error) {
 
-        //console.log("UPDATE QUESTION API ERROR............", error)
+        ////console.log("UPDATE QUESTION API ERROR............", error)
         toast.error("Something went wrong")
     }
     toast.dismiss(toastId)
 }
 
-export async function evalQuizQuestions(questions, token) {
+export async function evalQuizQuestions(questions, username,  token) {
     let result = []
     try {
-
-        const response = await apiConnector("POST", EVAL_QUIZ_API, questions, {Authorization: `Bearer ${token}`})
-        //console.log("FETCH EVALUATION API RESPONSE..........", response)
+        //console.log("Token:", token)
+        const response = await apiConnector("POST", EVAL_QUIZ_API + username , questions, {Authorization: `Bearer ${token}`})
+        ////console.log("FETCH EVALUATION API RESPONSE..........", response)
         result = response?.data
 
     } catch(error) {
-        //console.log("FETCH EVALUATION API ERROR............", error)
+        ////console.log("FETCH EVALUATION API ERROR............", error)
     }
     return result
 }

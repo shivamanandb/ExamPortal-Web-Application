@@ -31,6 +31,8 @@ import ViewQuizzesOfCategory from './pages/admin/ViewQuizzesOfCategory';
 import { ForgotPassword } from './pages/ForgotPassword';
 import { ResetPassword } from './pages/user/ResetPassword';
 import EnrolledStudents from './pages/admin/EnrolledStudents';
+import ResultsPage from './pages/admin/ResultPage';
+import QuizResultDetails from './pages/admin/QuizResultDetails';
 
 
 function App() {
@@ -39,10 +41,10 @@ function App() {
   const { token } = useSelector((state) => state.auth)
 
   // const user1 = jwtDecode(token);
-  // //console.log("USER: ", user1)
+  // ////console.log("USER: ", user1)
   const user1 = token ? jwtDecode(token) : null;
-  //console.log("USER: ", user1);
-  //console.log("Token: ", token)
+  ////console.log("USER: ", user1);
+  ////console.log("Token: ", token)
 
 
   return (
@@ -101,6 +103,8 @@ function App() {
                 <Route path='/admin/addQuestion/:qId/:title' element={<PrivateRoute><AddQuestion /></PrivateRoute>} />
                 <Route path='/admin/updateQuestion/:quesId' element={<PrivateRoute><UpdateQuestion /></PrivateRoute>} />
                 <Route path='/admin/categoryQuizzes/:categoryId' element={<PrivateRoute><ViewQuizzesOfCategory/></PrivateRoute>} />
+                <Route path='/admin/results' element={<PrivateRoute><ResultsPage/></PrivateRoute>}/>
+                <Route path="/admin/results/:quizId" element={<QuizResultDetails />} />
               </Route>
               <Route path='/admin/enrolled-students' element={<PrivateRoute><EnrolledStudents/></PrivateRoute>}/>
             </>

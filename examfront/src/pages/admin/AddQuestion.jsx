@@ -28,7 +28,7 @@ export const AddQuestion = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // //console.log(question);
+        // ////console.log(question);
         addQuestion(question, token)
 
         setQuestion({

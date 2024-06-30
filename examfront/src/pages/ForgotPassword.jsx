@@ -15,7 +15,7 @@ export const ForgotPassword = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axios.post(BASE_URL + '/api/password/reset-request', null, { params: { email: data.email } });
-            //console.log("Helllo", response)
+            ////console.log("Helllo", response)
             setMessage(response.data);
             setOpen(true);
         } catch (error) {

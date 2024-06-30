@@ -35,13 +35,13 @@ export const Signup = () => {
                 return;
             }
 
-            // //console.log("data:", typeof(data.instituteId))
+            // ////console.log("data:", typeof(data.instituteId))
             const instituteData = await fetchInstitute(data.institute);
 
             data.institute = instituteData
 
             const res = await apiConnector("POST", endpoints.SIGNUP_API, data);
-            //console.log("Response:", res);
+            ////console.log("Response:", res);
             toast.success("Registered Successfully");
             toast.dismiss(toastId);
 

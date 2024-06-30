@@ -3,8 +3,10 @@ import { Card, Typography, List, ListItem, ListItemPrefix } from "@material-tail
 import { NavLink, useNavigate } from 'react-router-dom';
 import { IoMdHome, IoMdAdd } from "react-icons/io";
 import { FaUserCircle } from 'react-icons/fa';
+import { SiSpeedtest } from "react-icons/si";
 import { BiSolidCategory, BiSolidMessageSquareAdd } from 'react-icons/bi';
 import { MdQuiz } from 'react-icons/md';
+import { IoLogOutOutline } from "react-icons/io5";
 import { useDispatch } from 'react-redux';
 import { logout } from '../../services/operations/authAPI';
 
@@ -123,6 +125,7 @@ export function Sidebar() {
                 <Typography className="text-lg">Profile</Typography>
               </ListItem>
             </NavLink>
+            
             <NavLink to="/admin/categories">
               <ListItem className="flex items-center p-0 transition-colors hover:bg-gray-800">
                 <ListItemPrefix>
@@ -155,7 +158,20 @@ export function Sidebar() {
                 <Typography className="text-lg">Add Quiz</Typography>
               </ListItem>
             </NavLink>
+
+            <NavLink to="/admin/results">
+              <ListItem className="flex items-center p-0 transition-colors hover:bg-gray-800">
+                <ListItemPrefix>
+                  <SiSpeedtest className="w-6 h-6 mr-2" />
+                </ListItemPrefix>
+                <Typography className="text-lg">Results</Typography>
+              </ListItem>
+            </NavLink>
+
             <ListItem className="flex items-center p-0 transition-colors cursor-pointer hover:bg-gray-800" onClick={logoutHandler}>
+            <ListItemPrefix>
+                  <IoLogOutOutline className="w-6 h-6 mr-2" />
+                </ListItemPrefix>
               <Typography className="text-lg">Log Out</Typography>
             </ListItem>
           </List>

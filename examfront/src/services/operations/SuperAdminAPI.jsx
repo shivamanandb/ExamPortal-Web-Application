@@ -34,7 +34,7 @@ export const createInstitute = async ({...name}, token) => {
 
 export const createAdmin = async ({...userData}, token) => {
     try {
-        //console.log("userData:", userData)
+        ////console.log("userData:", userData)
         const response = await apiConnector("POST", CREATE_NEW_ADMIN, userData,
             {
                 Authorization: `Bearer ${token}`

@@ -111,7 +111,7 @@ export const StartQuiz = () => {
     const newQuestions = [...questions];
     newQuestions[index].givenAnswer = value;
     setQuestions(newQuestions);
-    //console.log(questions)
+    ////console.log(questions)
   };
 
   const printPage = () => {
@@ -132,7 +132,7 @@ export const StartQuiz = () => {
         startTimer();
       })
       .catch((error) => {
-        //console.log(error);
+        ////console.log(error);
         // Handle error
       });
   };
@@ -168,9 +168,13 @@ export const StartQuiz = () => {
     }, 1000);
   };
 
+  const {user} = useSelector((state) => state.profile)
+
+  const username = user.username
+
   const evalQuiz = async (questions, token) => {
     try {
-      const res = await evalQuizQuestions(questions, token);
+      const res = await evalQuizQuestions(questions, username, token);
       const marksGot = parseFloat(res.marksGot).toFixed(2);
   
       setMarksGot(marksGot);
@@ -178,7 +182,7 @@ export const StartQuiz = () => {
       setAttempted(res.attempted);
       setIsSubmit(true);
     } catch (error) {
-      //console.log(error);
+      ////console.log(error);
       // Handle error
     }
   };

@@ -19,7 +19,7 @@ export const ViewQuizQuestions = () => {
             const res = await getQuestionsOfQuiz(qId, token)
             setQuestions(res)
         } catch (error) {
-            //console.log("Error: ", error)
+            ////console.log("Error: ", error)
         }
     }
 
@@ -30,10 +30,10 @@ export const ViewQuizQuestions = () => {
     const handleDelete = async(quesId, token) => {
         await deleteQuestion(quesId, token)
         setQuestions(questions.filter(question => question.quesId !== quesId))
-        //console.log("Question Deleted")
+        ////console.log("Question Deleted")
     }
 
-    // //console.log("Questions: ", questions)
+    // ////console.log("Questions: ", questions)
 
     return (
         <div>

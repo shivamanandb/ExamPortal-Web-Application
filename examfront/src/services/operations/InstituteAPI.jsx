@@ -6,7 +6,7 @@ const { DELETE_INSTITUTE_API, GET_INSTITUTE_API, GET_PARTICULAR_INSTITUTE_USER_A
 export async function deleteInstitute(userId, token) {
 
     try {
-        //console.log("userID: ", userId)
+        ////console.log("userID: ", userId)
         await apiConnector("DELETE", DELETE_INSTITUTE_API + userId, null,
             {
                 Authorization: `Bearer ${token}`

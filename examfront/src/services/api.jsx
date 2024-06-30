@@ -22,7 +22,7 @@ export const categoryEndPoints = {
 
 // QUIZZES ENDPOINTS
 export const quizzesEndPoints = {
-    GET_QUIZZES_API: BASE_URL + "/quiz/institute/",
+    GET_QUIZZES_API: BASE_URL + "/quiz/institute/all/",
     ADD_QUIZ_API: BASE_URL + "/quiz/",
     DELETE_QUIZ_API: BASE_URL + "/quiz/",
     UPDATE_QUIZ_API: BASE_URL + "/quiz/",
@@ -41,7 +41,7 @@ export const questionsEndPoints = {
     DELETE_QUESTION_API: BASE_URL + "/question/",
     GET_SINGLE_QUESTION_API: BASE_URL + "/question/",
     UPDATE_QUESTION_API: BASE_URL + "/question/",
-    EVAL_QUIZ_API: BASE_URL + "/question/evalQuiz"
+    EVAL_QUIZ_API: BASE_URL + "/question/evalQuiz/"
 }
 
 // SUPER ADMIN ENDPOINTS

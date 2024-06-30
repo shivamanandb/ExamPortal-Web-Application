@@ -17,7 +17,7 @@ export function getUserDetails(token, navigate) {
                 Authorization: `Bearer ${token}`
             });
 
-            //console.log("GET USER DETAILS API RESPONSE..........", response);
+            ////console.log("GET USER DETAILS API RESPONSE..........", response);
             // localStorage.setItem("user", JSON.stringify(response.data));
             dispatch(setUser(response.data));
 
@@ -36,7 +36,7 @@ export function getUserDetails(token, navigate) {
 
         } catch (error) {
             dispatch(logout(navigate));
-            //console.log("GET USER DETAILS API ERROR..............", error);
+            ////console.log("GET USER DETAILS API ERROR..............", error);
             toast.error("Could Not Get User Details");
         }
         toast.dismiss(toastId);

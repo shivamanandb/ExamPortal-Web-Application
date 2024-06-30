@@ -27,7 +27,7 @@ function QuizInstructions() {
             if (result.isConfirmed) {
                 // If user confirms, navigate to the quiz start page
                 navigate(`/start/${quizId}`)
-                //console.log('Starting quiz...');
+                ////console.log('Starting quiz...');
             }
         })
     }
@@ -40,7 +40,7 @@ function QuizInstructions() {
             
         } catch(error) {
             
-            //console.log("Error in fetching quiz: ", error.message)
+            ////console.log("Error in fetching quiz: ", error.message)
         }
     }
     
