@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.exam.examserver.models.exam.Category;
 import com.exam.examserver.models.exam.Quiz;
+import com.exam.examserver.models.exam.QuizResult;
 
 public interface QuizService {
     
@@ -27,5 +28,13 @@ public interface QuizService {
     public List<Quiz> getQuizzesForInstitute(Long instituteId);
 
     List<Quiz> getQuizzesByInstituteId(Long instituteId);
+
+    public List<QuizResult> getQuizResults(Long quizId);
+
+    public void submitQuizResult(QuizResult result);
+
+    public List<QuizResult> getQuizResultsByInstitute(Long instituteId);
+
+    public List<QuizResult> getQuizResultsDetailed(Long quizId);
     
 }

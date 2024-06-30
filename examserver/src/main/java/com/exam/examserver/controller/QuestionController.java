@@ -16,18 +16,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.exam.examserver.models.User;
 import com.exam.examserver.models.exam.Question;
 import com.exam.examserver.models.exam.Quiz;
+import com.exam.examserver.models.exam.QuizResult;
 import com.exam.examserver.service.QuestionService;
 import com.exam.examserver.service.QuizService;
+import com.exam.examserver.service.UserService;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/question")
 public class QuestionController {
-    
+
     @Autowired
     private QuestionService questionService;
 
@@ -36,6 +40,9 @@ public class QuestionController {
 
     private Question question;
 
+    @Autowired
+    private UserService userService;
+
     // add question
     @PostMapping("/")
     public ResponseEntity<Question> add(@RequestBody Question question) {
@@ -43,7 +50,7 @@ public class QuestionController {
     }
 
     // update the question
-    @PutMapping("/") 
+    @PutMapping("/")
     public ResponseEntity<Question> update(@RequestBody Question question) {
         return ResponseEntity.ok(this.questionService.updateQuestion(question));
     }
@@ -53,8 +60,9 @@ public class QuestionController {
     public ResponseEntity<?> getQuestionsOfQuiz(@PathVariable("qid") Long qid) {
         // Quiz quiz = new Quiz();
         // quiz.setqId(qid);
-        // Set<Question> questionsOfQuiz = this.questionService.getQuestionsOfQuiz(quiz);
-        
+        // Set<Question> questionsOfQuiz =
+        // this.questionService.getQuestionsOfQuiz(quiz);
+
         // return ResponseEntity.ok(questionsOfQuiz);
 
         Quiz quiz = this.quizService.getQuiz(qid);
@@ -63,11 +71,11 @@ public class QuestionController {
 
         List<Question> list = new ArrayList<>(questions);
 
-        if(list.size() > Integer.parseInt(quiz.getNumberOfQuestions())) {
-            list = list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions()+1));
+        if (list.size() > Integer.parseInt(quiz.getNumberOfQuestions())) {
+            list = list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions() + 1));
         }
 
-        list.forEach((q)->{
+        list.forEach((q) -> {
             q.setAnswer("");
         });
 
@@ -81,7 +89,7 @@ public class QuestionController {
         Quiz quiz = new Quiz();
         quiz.setqId(qid);
         Set<Question> questionsOfQuiz = this.questionService.getQuestionsOfQuiz(quiz);
-        
+
         return ResponseEntity.ok(questionsOfQuiz);
     }
 
@@ -97,34 +105,41 @@ public class QuestionController {
         this.questionService.deleteQuestion(quesId);
     }
 
-    @PostMapping("/evalQuiz")
-    public ResponseEntity<?> evalQuiz(@RequestBody List<Question> questions) {
-
+    @PostMapping("/evalQuiz/{username}")
+    public ResponseEntity<?> evalQuiz(@RequestBody List<Question> questions, @PathVariable("username") String username) {
+        System.out.println("Questios:" + questions);
+        System.out.println("Usernama:" + username);
         double marksGot = 0;
         int correctAnswers = 0;
         int attempted = 0;
 
-        // System.out.println(questions);
-        for(Question q : questions) {
-            // single quesiton
+        for (Question q : questions) {
             question = this.questionService.get(q.getQuesId());
 
-            if(question.getAnswer().equals(q.getGivenAnswer())) {
-                // correct
+            if (question.getAnswer().equals(q.getGivenAnswer())) {
                 correctAnswers++;
-
-                double marksSingle = Double.parseDouble(questions.get(0).getQuiz().getMaxMarks())/questions.size();
+                double marksSingle = Double.parseDouble(questions.get(0).getQuiz().getMaxMarks()) / questions.size();
                 marksGot += marksSingle;
             }
 
-            if(q.getGivenAnswer() != null) {
+            if (q.getGivenAnswer() != null) {
                 attempted++;
             }
+        }
 
-        };
+        Quiz quiz = questions.get(0).getQuiz();
+        User student = userService.getUser(username);
 
-        Map<String, Object> map = Map.of("marksGot", marksGot, "correctAnswers", correctAnswers, "attempted", attempted);
+        QuizResult result = new QuizResult();
+        result.setStudent(student);
+        result.setQuiz(quiz);
+        result.setMarks((int) marksGot);
+        result.setTotalMarks(Integer.parseInt(quiz.getMaxMarks()));
 
+        quizService.submitQuizResult(result);
+
+        Map<String, Object> map = Map.of("marksGot", marksGot, "correctAnswers", correctAnswers, "attempted",
+                attempted);
         return ResponseEntity.ok(map);
     }
 }

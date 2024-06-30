@@ -16,7 +16,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Autowired
     private QuestionRepository questionRepository;
+
     private Question question;
+    
 
     @Override
     public Question addQuestion(Question question) {

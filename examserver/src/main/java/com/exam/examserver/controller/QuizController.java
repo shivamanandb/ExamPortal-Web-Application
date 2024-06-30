@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.exam.examserver.models.exam.Category;
 import com.exam.examserver.models.exam.Quiz;
+import com.exam.examserver.models.exam.QuizResult;
 import com.exam.examserver.service.QuizService;
 
 @RestController
@@ -49,11 +50,11 @@ public class QuizController {
         return ResponseEntity.ok(this.quizService.getQuizzes());
     }
 
-    // // Get quizzes by institute ID
-    // @GetMapping("/institute/{instituteId}")
-    // public ResponseEntity<?> getQuizzesByInstituteId(@PathVariable Long instituteId) {
-    //     return ResponseEntity.ok(this.quizService.getQuizzesByInstituteId(instituteId));
-    // }
+    // Get quizzes by institute ID
+    @GetMapping("/institute/all/{instituteId}")
+    public ResponseEntity<?> getQuizzesByInstituteId(@PathVariable Long instituteId) {
+        return ResponseEntity.ok(this.quizService.getQuizzesByInstituteId(instituteId));
+    }
 
     // get Quiz
     @GetMapping("/institute/{instituteId}")
@@ -94,6 +95,24 @@ public class QuizController {
     Category category = new Category();
     category.setCid(cid);
     return this.quizService.getActiveQuizzesOfCategory(category);
+    }
+
+     @GetMapping("/{quizId}/results")
+    public ResponseEntity<List<QuizResult>> getQuizResults(@PathVariable Long quizId) {
+        List<QuizResult> results = quizService.getQuizResults(quizId);
+        return ResponseEntity.ok(results);
+    }
+
+    @GetMapping("/institute/{instituteId}/results")
+    public ResponseEntity<List<QuizResult>> getQuizResultsByInstitute(@PathVariable Long instituteId) {
+        List<QuizResult> results = quizService.getQuizResultsByInstitute(instituteId);
+        return ResponseEntity.ok(results);
+    }
+
+    @GetMapping("/{quizId}/results-detailed")
+    public ResponseEntity<List<QuizResult>> getQuizResultsDetailed(@PathVariable Long quizId) {
+        List<QuizResult> results = quizService.getQuizResultsDetailed(quizId);
+        return ResponseEntity.ok(results);
     }
 
 }
