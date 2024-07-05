@@ -42,7 +42,7 @@ function App() {
 
   // const user1 = jwtDecode(token);
   // ////console.log("USER: ", user1)
-  const user1 = token ? jwtDecode(token) : null;
+  // const user1 = token ? jwtDecode(token) : null;
   ////console.log("USER: ", user1);
   ////console.log("Token: ", token)
 
@@ -72,6 +72,7 @@ function App() {
 
                 <Route path='/user/home' element={<PrivateRoute><Home /></PrivateRoute>} />
                 <Route path='/user/:cid' element={<PrivateRoute><LoadQuiz /></PrivateRoute>} />
+                <Route path='/user/myProfile' element={<PrivateRoute><Profile /></PrivateRoute>} />
                 <Route path='/user/instructions/:quizId' element={<PrivateRoute><Instructions /></PrivateRoute>} />
 
               </Route>
@@ -117,6 +118,7 @@ function App() {
               <Route path='/super/home' element={<PrivateRoute><SuperDashboard/></PrivateRoute>} />
               <Route path='/super/admins' element={<PrivateRoute><InstituteAdminList/></PrivateRoute>} />
               <Route path='/super/create-admin' element={<PrivateRoute><CreateInstituteAdmin/></PrivateRoute>} />
+              <Route path='/super/myProfile' element={<PrivateRoute><Profile /></PrivateRoute>} />
 
             </>
           )

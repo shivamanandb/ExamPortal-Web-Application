@@ -14,6 +14,7 @@ import {
   Container
 } from '@mui/material';
 import { MdOutlineMenuBook, MdPerson, MdExitToApp } from "react-icons/md";
+import { ACCOUNT_TYPE } from '../utils/Constants';
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -22,11 +23,20 @@ export const Navbar = () => {
   const { user } = useSelector((state) => state.profile);
   const [anchorEl, setAnchorEl] = useState(null);
 
+  console.log(user)
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
+    
+    if(user && user.authorities[0].authority === ACCOUNT_TYPE.ADMIN)
+      navigate('/admin/myProfile')
+    else if(user && user.authorities[0].authority === ACCOUNT_TYPE.NORMAL)
+      navigate('/user/myProfile')
+    else if(user && user.authorities[0].authority === ACCOUNT_TYPE.SUPER_USER)
+      navigate('/super/myProfile')
     setAnchorEl(null);
   };
 

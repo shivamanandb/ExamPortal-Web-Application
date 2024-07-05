@@ -38,6 +38,7 @@ const ResultsPage = () => {
       }
       grouped[result.quiz.qId].attemptCount++;
     });
+    
     return Object.values(grouped);
   };
 

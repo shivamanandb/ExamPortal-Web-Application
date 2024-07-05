@@ -16,7 +16,7 @@ const QuizResultDetails = () => {
   const loadQuizResultsDetailed = async () => {
     try {
       const detailedResults = await getQuizResultsDetailed(quizId, token);
-      //console.log(detailedResults)
+      // console.log(detailedResults)
       setResults(detailedResults);
     } catch (error) {
       console.error('Error loading detailed quiz results:', error);
@@ -35,7 +35,7 @@ const QuizResultDetails = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {results.map((result) => (
+        {results.map((result) => (
             <TableRow key={result.id}>
               <TableCell>{result.rank}</TableCell>
               <TableCell>{result.student.username}</TableCell>
